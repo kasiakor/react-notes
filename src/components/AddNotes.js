@@ -1,26 +1,31 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addNoteAction } from "../redux/actions/notesAction";
 
 import "./Form.css";
 const AddNotes = () => {
+  const dispatch = useDispatch();
   const [note, setNote] = useState({
     title: "",
     content: "",
   });
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setNote({
       ...note,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     //prevent empty notes
     if (note.title === "" || note.content === "") {
       return alert("Please fill in the form");
     }
     e.preventDefault();
     //dispatch action
+
+    dispatch(addNoteAction(note));
 
     //reset form
     setNote({

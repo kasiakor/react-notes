@@ -7,6 +7,9 @@ const initialState = {
 };
 
 const notesReducer = (state = initialState, action) => {
+  // log payload
+
+  console.log("payload", action.payload);
   switch (action.type) {
     case ADD_NOTE:
       // new note
@@ -16,7 +19,7 @@ const notesReducer = (state = initialState, action) => {
         content: action.payload.content,
       };
       return {
-        notes: [...state, newNote],
+        notes: [...state.notes, newNote],
       };
     default:
       return state;
