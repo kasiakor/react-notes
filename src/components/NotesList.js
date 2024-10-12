@@ -16,6 +16,8 @@ const NotesList = () => {
     return storeData.notes;
   });
 
+  console.log("notes", notes);
+
   return (
     <>
       <h1>Notes List</h1>

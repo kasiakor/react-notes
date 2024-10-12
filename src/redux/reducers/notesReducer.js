@@ -10,7 +10,8 @@ const notesReducer = (state = initialState, action) => {
   // log payload
 
   console.log("payload", action.payload);
-  console.log("state", state);
+  console.log("state ddd.notes", state.notes);
+
   switch (action.type) {
     case ADD_NOTE:
       // new note
@@ -20,13 +21,11 @@ const notesReducer = (state = initialState, action) => {
         content: action.payload.content,
       };
 
-      // add note to local storage
-
-      const updatedNote = [...state, newNote];
-      localStorage.setItem("notes", JSON.stringify(updatedNote));
-
+      //add note into storage
+      const updatedNotes = [...(state.notes || []), newNote];
+      localStorage.setItem("notes", JSON.stringify(updatedNotes));
       return {
-        notes: [...state, newNote],
+        notes: [...(state.notes || []), newNote],
       };
 
     case FETCH_NOTES:

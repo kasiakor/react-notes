@@ -62,7 +62,7 @@ const AddNotes = () => {
           Add
         </button>
       </form>
-      <a href="">Enroll in the course</a>
+      <a href="/#">Enroll in the course</a>
     </div>
   );
 };
